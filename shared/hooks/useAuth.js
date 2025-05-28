@@ -1,4 +1,3 @@
-// shared/hooks/useAuth.js - Authentication hook
 import { useState, useEffect } from 'react';
 import { onAuthStateChange } from '../firebase/auth';
 
@@ -8,17 +7,11 @@ export const useAuth = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChange(
-      (user) => {
-        setUser(user);
-        setLoading(false);
-        setError(null);
-      },
-      (error) => {
-        setError(error);
-        setLoading(false);
-      }
-    );
+    const unsubscribe = onAuthStateChange((user) => {
+      setUser(user);
+      setLoading(false);
+      setError(null);
+    });
 
     return unsubscribe;
   }, []);

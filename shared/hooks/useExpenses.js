@@ -11,7 +11,6 @@ export const useExpenses = (userId) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch expenses
   const fetchExpenses = async () => {
     if (!userId) return;
     
@@ -27,7 +26,6 @@ export const useExpenses = (userId) => {
     }
   };
 
-  // Add new expense
   const createExpense = async (expenseData) => {
     try {
       const expenseId = await addExpense(userId, expenseData);
@@ -40,7 +38,6 @@ export const useExpenses = (userId) => {
     }
   };
 
-  // Update existing expense
   const editExpense = async (expenseId, updateData) => {
     try {
       await updateExpense(expenseId, updateData);
@@ -57,7 +54,6 @@ export const useExpenses = (userId) => {
     }
   };
 
-  // Delete expense
   const removeExpense = async (expenseId) => {
     try {
       await deleteExpense(expenseId);
